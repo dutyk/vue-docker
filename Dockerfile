@@ -1,4 +1,4 @@
-FROM node:node:0.12.7-wheezy
+FROM node:0.12.7-wheezy
 
 MAINTAINER YuanKang "https://github.com/dutyk"
 
@@ -25,7 +25,7 @@ WORKDIR /app
 COPY ./package.json /app/
 COPY ./bower.json /app/
 
-RUN npm install && bower install --allow-root 
+RUN npm install && bower install --allow-root
 
 COPY . /app/
 
