@@ -1,4 +1,4 @@
-FROM node:0.12.7-wheezy
+FROM node:4.8.0-slim
 
 MAINTAINER YuanKang "https://github.com/dutyk"
 
