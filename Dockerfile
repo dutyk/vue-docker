@@ -22,7 +22,7 @@ RUN npm install -g gulp
 WORKDIR /app
 
 COPY ./package.json /app/
-RUN npm install --allow-root
+RUN npm install
 
 COPY . /app/
 
