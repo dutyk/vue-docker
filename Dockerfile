@@ -17,6 +17,8 @@ RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
 EXPOSE 80
 
+RUN apt-get install git-core
+
 RUN npm install -g gulp
 
 WORKDIR /app
