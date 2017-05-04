@@ -1,0 +1,23 @@
+{
+  "name": "gulp_webpack_bower",
+  "description": "a test for bower",
+  "main": "index.js",
+  "authors": [
+    "zidong.wang <wangzidongprince@163.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/gagaprince/gulp_generator",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jQuery": "^2.1.1",
+    "zepto": "^1.1.6",
+    "vue": "^2.0.1"
+  }
+}

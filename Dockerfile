@@ -1,4 +1,4 @@
-FROM node:4.8.0-slim
+FROM node:node:0.12.7-wheezy
 
 MAINTAINER YuanKang "https://github.com/dutyk"
 
@@ -17,14 +17,15 @@ RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
 EXPOSE 80
 
-RUN apt-get install git
 
-RUN npm install -g gulp
+RUN npm install -g bower gulp
 
 WORKDIR /app
 
 COPY ./package.json /app/
-RUN npm install
+COPY ./bower.json /app/
+
+RUN npm install && bower install --allow-root 
 
 COPY . /app/
 
