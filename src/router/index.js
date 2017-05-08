@@ -26,10 +26,6 @@ export default new Router({
                     component: resolve => require(['../components/page/MarketTrades.vue'], resolve)
                 },
                 {
-                    path: '/trade',
-                    component: resolve => require(['../components/page/VueTable.vue'], resolve)     // vue-datasource组件
-                },
-                {
                     path: '/user',
                     component: resolve => require(['../components/page/Users.vue'], resolve)
                 },
