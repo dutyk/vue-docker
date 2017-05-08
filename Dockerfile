@@ -1,4 +1,4 @@
-FROM node:4.8.0-slim
+FROM node:0.12.7-wheezy
 
 MAINTAINER YuanKang "https://github.com/dutyk"
 
@@ -19,13 +19,7 @@ EXPOSE 80
 
 WORKDIR /app
 
-COPY ./package.json /app/
-
-RUN npm install --allow-root
-
 COPY . /app/
-
-RUN npm run build
 
 RUN cp -R /app/dist/*  /usr/share/nginx/html
 
