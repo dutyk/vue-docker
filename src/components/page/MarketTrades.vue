@@ -132,8 +132,8 @@ export default {
       var tradeurl = 'https://data.btcchina.com/data/orderbook?market='+marketname+'&limit='+this.limit;
       var marketurl = 'https://data.btcchina.com/data/ticker?market=' + marketname;
       axios.get(tradeurl).then((res) => {
-        this.buydata = res.data.asks;
-        this.selldata = res.data.bids;
+        this.buydata = res.data.bids;
+        this.selldata = res.data.asks;
       })
       axios.get(marketurl).then((res) => {
         var tmp = [];
@@ -150,17 +150,24 @@ export default {
     },
     formatData(datas, flag) {
       var tradesData = [];
-      for(var i = datas.length; i >= 1; i--){
-        var tmp = new Object();
-        if(flag == 1){
-          tmp.id = '买(' + (datas.length-i+1) + ')'
-        }else{
-          tmp.id = '卖(' + (datas.length-i+1) + ')'
+      if(flag == 1){
+        for(var i = 0; i < datas.length; i++){
+          var tmp = new Object();
+          tmp.id = '买(' + (i+1) + ')'
+          tmp.price = this.price_flag+datas[i][0];
+          tmp.amount = this.amount_flag+datas[i][1];
+          tmp.sum =  this.total_flag+(Math.round(datas[i][0] * datas[i][1] * 10000)/10000);
+          tradesData[i] = tmp;
         }
-        tmp.price = this.price_flag+datas[i-1][0];
-        tmp.amount = this.amount_flag+datas[i-1][1];
-        tmp.sum =  this.total_flag+(Math.round(datas[i-1][0] * datas[i-1][1] * 10000)/10000);
-        tradesData[datas.length-i] = tmp;
+      }else{
+        for(var i = datas.length; i >= 1; i--){
+          var tmp = new Object();
+          tmp.id = '卖(' + (datas.length-i+1) + ')'
+          tmp.price = this.price_flag+datas[i-1][0];
+          tmp.amount = this.amount_flag+datas[i-1][1];
+          tmp.sum =  this.total_flag+(Math.round(datas[i-1][0] * datas[i-1][1] * 10000)/10000);
+          tradesData[datas.length-i] = tmp;
+        }
       }
       return tradesData;
     },
